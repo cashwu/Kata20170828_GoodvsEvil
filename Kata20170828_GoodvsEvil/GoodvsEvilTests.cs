@@ -25,6 +25,12 @@ namespace Kata20170828_GoodvsEvil
             GoodvsEvilShouldBeEvilWin("1 1 1 1 1 1", "1 1 1 1 1 1 1");
         }
 
+        [TestMethod]
+        public void input_good_last_and_evil_0_1_1_1_1_should_return_good_triumph()
+        {
+            GoodvsEvilShouldBeGoodWin("0 0 0 0 0 10", "0 1 1 1 1 0 0");
+        }
+
         private static void GoodvsEvilShouldBeNoVictor(string good, string evil)
         {
             var actual = new Kata().GoodVsEvil(good, evil);
