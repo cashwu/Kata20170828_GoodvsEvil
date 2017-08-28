@@ -16,7 +16,13 @@ namespace Kata20170828_GoodvsEvil
         [TestMethod]
         public void input_good_1_1_1_and_evil_1_1_1_should_return_good_triumph()
         {
-            GoodvsEvilShouldBeGoodTriumph("1 1 1 0 0 0", "1 1 1 0 0 0 0");
+            GoodvsEvilShouldBeGoodWin("1 1 1 0 0 0", "1 1 1 0 0 0 0");
+        }
+
+        [TestMethod]
+        public void input_good_all_1_and_evil_all_1_should_return_good_triumph()
+        {
+            GoodvsEvilShouldBeEvilWin("1 1 1 1 1 1", "1 1 1 1 1 1 1");
         }
 
         private static void GoodvsEvilShouldBeNoVictor(string good, string evil)
@@ -25,10 +31,16 @@ namespace Kata20170828_GoodvsEvil
             Assert.AreEqual("Battle Result: No victor on this battle field", actual);
         }
 
-        private static void GoodvsEvilShouldBeGoodTriumph(string good, string evil)
+        private static void GoodvsEvilShouldBeGoodWin(string good, string evil)
         {
             var actual = new Kata().GoodVsEvil(good, evil);
             Assert.AreEqual("Battle Result: Good triumphs over Evil", actual);
+        }
+
+        private static void GoodvsEvilShouldBeEvilWin(string good, string evil)
+        {
+            var actual = new Kata().GoodVsEvil(good, evil);
+            Assert.AreEqual("Battle Result: Evil eradicates all trace of Good", actual);
         }
     }
 
@@ -45,6 +57,10 @@ namespace Kata20170828_GoodvsEvil
             if (goodWorth > evilWorth)
             {
                 return "Battle Result: Good triumphs over Evil";
+            }
+            if (goodWorth < evilWorth)
+            {
+                return "Battle Result: Evil eradicates all trace of Good";
             }
 
             return "Battle Result: No victor on this battle field";
