@@ -57,8 +57,8 @@ namespace Kata20170828_GoodvsEvil
             var goodPeopleWorth = new[] { 1, 2, 3, 3, 4, 10 };
             var evilPeopleWorth = new[] { 1, 2, 2, 2, 3, 5, 10 };
 
-            var goodWorth = good.Split(' ').Select((a, i) => goodPeopleWorth[i] * int.Parse(a)).Sum();
-            var evilWorth = evil.Split(' ').Select((a, i) => evilPeopleWorth[i] * int.Parse(a)).Sum();
+            var goodWorth = good.Split(' ').Select(int.Parse).Zip(goodPeopleWorth, (g, w) => g * w).Sum();
+            var evilWorth = evil.Split(' ').Select(int.Parse).Zip(evilPeopleWorth, (e, w) => e * w).Sum();
 
             if (goodWorth > evilWorth)
             {
